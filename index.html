@@ -14,7 +14,7 @@
 
           <div v-for="question in questions">
       		<h4>{{question.text}}</h4>
-      		<button v-if="option.userHasAnswered" v-for="option in question.options" @click="option.isCorrect ? correct() : incorrect()">{{option.text}}</button>
+      		<button v-for="option in question.options" @click="option.isCorrect ? correct() : incorrect()" v-if="option.userHasAnswered">{{option.text}}</button>
     	     </div>
     </div>
     <script>
@@ -92,6 +92,26 @@
               				{
               					text: "Evan You",
               					isCorrect: 1,
+                        userHasAnswered: true,
+              				},
+              			]
+              		},
+                  {
+              			text: "Who is the faculty for SWENGG?",
+              			options: [
+              				{
+              					text: "Ishan Ahuja",
+              					isCorrect: 1,
+                        userHasAnswered: true,
+              				},
+              				{
+              					text: "Sonia Sathe",
+              					isCorrect: 0,
+                        userHasAnswered: true,
+              				},
+              				{
+              					text: "Shehrevar Davierwala",
+              					isCorrect: 0,
                         userHasAnswered: true,
               				},
               			]
