@@ -1,136 +1,144 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>MCQ Assignment</title>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title>MCQ Assignment</title>
+</head>
+<body>
 
-    <script src="vue.js"></script>
+  <script src="vue.js"></script>
 
-    <div id="app">
-        <h2>Multiple Choice Question!</h2>
-        <h1>Score: {{score}}</h1>
+  <div id="app">
+    <h2>Multiple Choice Question!</h2>
+    <h1>Score: {{score}}</h1>
 
-          <div v-for="question in questions">
-      		<h4>{{question.text}}</h4>
-      		<button v-for="option in question.options" @click="option.isCorrect ? correct() : incorrect()" v-if="option.userHasAnswered">{{option.text}}</button>
-    	     </div>
+    <div v-for="question in questions">
+      <h4>{{question.text}}</h4>
+      <div v-if="question.userHasAnswered==1">
+        <button v-for="option in question.options" @click="option.isCorrect ? correct() : incorrect()">{{option.text}}</button>
+      </div>
     </div>
-    <script>
-      new Vue ({
-        el: '#app',
-        data:
-        {
+  </div>
+  <script>
+  new Vue ({
+    el: '#app',
+    data:
+    {
 
-                questions: [{
-                              text: "In which direction does the sun rise?",
-                              options: [  {
-                                            text: "East",
-                                            isCorrect: 1,
-                                            userHasAnswered: true,
-                                          },
-                                          {
-                                            text: "West",
-                                            isCorrect: 0,
-                                            userHasAnswered: true,
-                                          },
-                                          {
-                                            text: "North",
-                                            isCorrect: 0,
-                                            userHasAnswered: true,
-                                          },
-                                        ]
-                            },
-                            {
-                              text: "Is the Pineapple Pen song any good?",
-                              options: [  {
-                                            text: "Yes",
-                                            isCorrect: 0,
-                                            userHasAnswered: true,
-                                          },
-                                          {
-                                            text: "No",
-                                            isCorrect: 1,
-                                            userHasAnswered: true,
-                                          },
-                                        ]
-                            },
-                            {
-                              text: "What species is Harambe?",
-                              options:[
-                        {
-                          text: "Gorilla",
-                          isCorrect: 1,
-                          userHasAnswered: true,
-                        },
-                        {
-                          text: "Human",
-                          isCorrect: 0,
-                          userHasAnswered: true,
-                        },
-                        {
-                          text: "Flower",
-                          isCorrect: 0,
-                          userHasAnswered: true,
-                        },
-                    ]
-                  },
-                  {
-              			text: "Who is the creator of Vue?",
-              			options: [
-              				{
-              					text: "Taylor Otwell",
-              					isCorrect: 0,
-                        userHasAnswered: true,
-              				},
-              				{
-              					text: "David Heinemeier Hansson",
-              					isCorrect: 0,
-                        userHasAnswered: true,
-              				},
-              				{
-              					text: "Evan You",
-              					isCorrect: 1,
-                        userHasAnswered: true,
-              				},
-              			]
-              		},
-                  {
-              			text: "Who is the faculty for SWENGG?",
-              			options: [
-              				{
-              					text: "Ishan Ahuja",
-              					isCorrect: 1,
-                        userHasAnswered: true,
-              				},
-              				{
-              					text: "Sonia Sathe",
-              					isCorrect: 0,
-                        userHasAnswered: true,
-              				},
-              				{
-              					text: "Shehrevar Davierwala",
-              					isCorrect: 0,
-                        userHasAnswered: true,
-              				},
-              			]
-              		},
-                ],
-                score: 0,
+      questions: [{
+        text: "In which direction does the sun rise?",
+        options:
+      [
+        {
+          text: "East",
+          isCorrect: 1,
         },
-        methods: {
-          correct: function() {
-                  alert("You answer is correct!");
-                  this.score+=1;
-                  this.userHasAnswered=false;
-          },
-          incorrect: function() {
-                  alert("Your answer is wrong!");
-                  this.userHasAnswered=true;
-          }
-        }
-      })
-    </script>
-  </body>
+        {
+          text: "West",
+          isCorrect: 0,
+        },
+        {
+          text: "North",
+          isCorrect: 0,
+        },
+      ],
+      userHasAnswered: 1,
+    },
+    {
+      text: "Is the Pineapple Pen song any good?",
+      options: [  {
+        text: "Yes",
+        isCorrect: 0,
+
+      },
+      {
+        text: "No",
+        isCorrect: 1,
+
+      },
+    ],
+    userHasAnswered: 1,
+  },
+    {
+      text: "What species is Harambe?",
+      options:
+      [
+      {
+        text: "Gorilla",
+        isCorrect: 1,
+
+      },
+      {
+        text: "Human",
+        isCorrect: 0,
+
+      },
+      {
+        text: "Flower",
+        isCorrect: 0,
+
+      },
+    ],
+    userHasAnswered: 1,
+  },
+  {
+    text: "Who is the creator of Vue?",
+    options: [
+      {
+        text: "Taylor Otwell",
+        isCorrect: 0,
+
+      },
+      {
+        text: "David Heinemeier Hansson",
+        isCorrect: 0,
+
+      },
+      {
+        text: "Evan You",
+        isCorrect: 1,
+
+      },
+    ],
+    userHasAnswered: 1,
+  },
+  {
+    text: "Who is the faculty for SWENGG?",
+    options: [
+      {
+        text: "Ishan Ahuja",
+        isCorrect: 1,
+
+      },
+      {
+        text: "Sonia Sathe",
+        isCorrect: 0,
+
+      },
+      {
+        text: "Shehrevar Davierwala",
+        isCorrect: 0,
+
+      },
+    ],
+userHasAnswered: 1,
+  },
+],
+score: 0,
+
+},
+methods: {
+  correct: function() {
+    alert("You answer is correct!");
+    this.score+=1;
+    questions.userHasAnswered=0;
+
+  },
+  incorrect: function() {
+    alert("Your answer is wrong!");
+  }
+}
+})
+</script>
+</body>
 </html>
